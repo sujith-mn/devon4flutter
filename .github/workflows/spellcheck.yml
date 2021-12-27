@@ -1,17 +1,17 @@
-name: spellcheck
+name: spellcheck 
 on:
   push:
+    paths:
+       - '**.asciidoc'
+       - '**.adoc'
+       - '**.md'
   workflow_dispatch:
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
      - name: spellcheck checkout
        uses: actions/checkout@v2
-     - name: download spellcheck config file
-       run: |
-        wget https://raw.githubusercontent.com/devonfw/.github/master/.github/workflows/.spellcheck.yml -O ./.spellcheck.yml
      - name: download dictionary
        run: |
         wget https://raw.githubusercontent.com/devonfw/.github/master/en-devonfw.dict -O ./en-devonfw.dict
